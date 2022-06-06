@@ -1,0 +1,47 @@
+<% if flash[:notice] %>
+ <p id=notice><%= flash[:notice] %></p>
+<% else %>
+ <p id=notice></p>
+<% end %>
+        <div class="container">
+  <div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0">
+
+      <h2>Sign up</h2>
+
+  <%= form_with model: @user, id: 'new_user',  class: 'new_user', url: user_registration_path do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name,autofocus: true, class:"name" %>
+  　</div>
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true,class:"mail" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :password %>
+          <em>(6 characters minimum)</em>
+          <br>
+          <%= f.password_field :password, autofocus: true,class:"password" %>
+        </div>
+        <div class="field">
+          <label for="user_password_confirmation">Password confirmation</label><br>
+          <input autocomplete="off" class="password_confirm" type="password" name="user[password_confirmation]" id="user_password_confirmation">
+        </div>
+        <div class="actions">
+          <input type="submit" name="commit" value="Sign up" class="btn btn-sm btn-success" data-disable-with="Sign up">
+        </div>
+         <%end%>
+        <a href="/users/sign_in">Log in</a><br>
+
+
+
+
+
+
+    </div>
+  </div>
+</div>
